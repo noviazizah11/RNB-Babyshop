@@ -1,0 +1,490 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+	<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Azizah Shop</title>
+        <link rel="shortcut icon" href="images/shop-icon-clip-art.png">
+	    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen"/>
+	    <script src="js/jquery.min.js"></script>
+        
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/datepicker.min.css" />
+        
+        <script src="js/formValidation.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+
+        <script src="js/bootstrap-datepicker.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                // IMPORTANT: You must call .steps() before calling .formValidation()
+                $('#profileForm')
+                .steps({
+                    headerTag: 'h2',
+                    bodyTag: 'section',
+                    onStepChanged: function(e, currentIndex, priorIndex) {
+                        // You don't need to care about it
+                        // It is for the specific demo
+                        adjustIframeHeight();
+                    },
+                    // Triggered when clicking the Previous/Next buttons
+                    onStepChanging: function(e, currentIndex, newIndex) {
+                        var fv = $('#profileForm').data('formValidation'), // FormValidation instance
+                        // The current step container
+                        $container = $('#profileForm').find('section[data-step="' + currentIndex +'"]');
+
+                        // Validate the container
+                        fv.validateContainer($container);
+
+                        var isValidStep = fv.isValidContainer($container);
+                        if (isValidStep === false || isValidStep === null) {
+                            return false;
+                            // Do not jump to the next step
+                        }
+
+                        return true;
+                    },
+                    // Triggered when clicking the Finish button
+                    onFinishing: function(e, currentIndex) {
+                        var fv         = $('#profileForm').data('formValidation'),
+                            $container = $('#profileForm').find('section[data-step="' + currentIndex +'"]');
+
+                        // Validate the last step container
+                        fv.validateContainer($container);
+
+                        var isValidStep = fv.isValidContainer($container);
+                        if (isValidStep === false || isValidStep === null) {
+                            return false;
+                        }
+
+                        return true;
+                    },
+                    onFinished: function(e, currentIndex) {
+                        // Uncomment the following line to submit the form using the defaultSubmit() method
+                         $('#profileForm').formValidation('defaultSubmit');
+
+                        // For testing purpose
+                        $('#welcomeModal').modal();
+                    }
+                })
+                .formValidation({
+                    framework: 'bootstrap',
+                    fields: {
+                        // PersonaL Data
+                        nama: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Nama harus diisi'
+                                },
+                                stringLength: {
+                                    min: 3,
+                                    max: 30,
+                                    message: 'Nama harus lebih dari 3 karakter, dan maximal 30 karakter'
+                                }
+                            }
+                        },
+                        tanggal_lahir: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Tanggal lahir harus diisi'
+                                }
+                            }
+                        },
+                        jk: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Jenis kelamin harus diisi'
+                                }
+                            }
+                        },
+                        email: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Email harus diisi'
+                                }
+                            }
+                        },
+                        kode: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Kode barang harus diisi'
+                                }
+                            }
+                        },
+                        jml: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Jumlah barang harus diisi'
+                                }
+                            }
+                        },
+                        no_rek: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'No. Rek harus diisi'
+                                },
+                                regexp: {
+                                    regexp: /^[0-9]+$/,
+                                    message: 'No. Rek hanya boleh berisikan nomor'
+                                }
+                            }
+                        },
+                        konfirmasi: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Konfirmasi harus diisi'
+                                }
+                            }
+                        },
+                        no_rek_tujuan: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'No. Rek tujuan harus diisi'
+                                }
+                            }
+                        }
+                    }
+                })
+                                
+                // Initialize the date picker for the original due date field
+                $('.dueDatePicker')
+                    .datepicker({
+                        format: 'yyyy-mm-dd'
+                    });
+                });
+        </script>
+	</head>
+	
+	<body style="background:#d6dbdc;">
+		<div id="wrap"><br>
+			<!-- Menu CSS -->
+		    <div class="menu" style="margin-left:-180px; margin-top:10px;">
+		        <a href="data_barang.html">
+			        <div class="item">
+			            <div class="link icon_saran"></div>
+			            <div class="item_content">
+			                <h2 class="text">Data Barang</h2>
+			            </div>
+			        </div>
+			    </a>
+			    <a href="saran.html">
+			        <div class="item">
+			            <div class="link icon_saran"></div>
+			            <div class="item_content">
+			                <h2 class="text">Saran</h2>
+			            </div>
+			        </div>
+			    </a>
+			    <a href="kontak.html">
+			        <div class="item">
+			            <div class="link icon_kontak"></div>
+			            <div class="item_content">
+			                <h2 class="text">Kontak Kami</h2>
+			            </div>
+			        </div>
+			    </a>
+			    <a href="order.html">
+			        <div class="item">
+			            <div class="link icon_order"></div>
+			            <div class="item_content">
+			                <h2 class="text">Order</h2>
+			            </div>
+			        </div>
+			    </a>
+			    <a href="diskon.html">
+		        	<div class="item">
+			            <div class="link icon_diskon"></div>
+			            <div class="item_content">
+			                <h2 class="text">Diskon</h2>
+			            </div>
+			        </div>
+			    </a>
+			    <a href="profile.html">
+			        <div class="item">
+			            <div class="link icon_profile"></div>
+			            <div class="item_content">
+			                <h2 class="text">Tentang Kami</h2>
+			            </div>
+			        </div>
+			    </a>
+			    <a href="index.html">
+			        <div class="item">
+			            <div class="link icon_beranda"></div>
+			            <div class="item_content">
+			                <h2 class="text">Beranda</h2>
+			            </div>
+			        </div>
+			    </a>
+		    </div>
+
+			<div style="clear: both"></div><br>
+			<div class="entrytitle"></div>
+			<hr><h4 class="notif">.: Cara Order: isi form dibawah ini, dan ikuti step-stepnya</h4><hr>	
+		    <!-- Content -->
+		    <div class="container">
+	            <div class="row">
+	                <div class="col-xs-12">
+	                    <!-- Include jQuery Steps file -->
+	                    <link rel="stylesheet" href="css/jquery.steps.css">
+	                    <script src="js/jquery.steps.min.js"></script>
+
+	                    <style type="text/css">
+	                        /* Adjust the height of section */
+	                        #profileForm .content {
+	                            min-height: 100px;
+	                        }
+	                        #profileForm .content > .body {
+	                            width: 100%;
+	                            height: auto;
+	                            padding: 20px;
+	                            position: relative;
+	                        }
+	                    </style>
+
+	                    <form id="profileForm" action="index.html" method="post" class="form-horizontal" style="margin-top: 10px;" enctype='multipart/form-data'>
+	                        <h2>Data Diri</h2>
+	                        <section data-step="0">
+	                            <div class="row" style="font-size: 13px;">
+	                                <div class="col-lg-6">
+	                                    <div class="form-group">
+	                                        <label class="col-xs-4 control-label" style="text-align: left;">Nama (*)</label>
+	                                        <div class="col-xs-7">
+	                                            <input type="text" class="form-control" style="width: 300px;" name="nama" />
+	                                        </div>
+	                                    </div>
+
+	                                    <div class="form-group">
+	                                        <label class="col-xs-4 control-label" style="text-align: left;">Tanggal Lahir (*)</label>
+	                                        <div class="col-xs-7">
+	                                            <div class="input-group input-append date dueDatePicker">
+	                                                <input type="text" class="form-control" name="tanggal_lahir" placeholder="YYYY-MM-DD" style="width: 260px;"/>
+	                                                <span class="input-group-addon add-on"><span>C</span></span>
+	                                            </div>
+	                                        </div>
+	                                    </div>
+
+	                                    <div class="form-group">
+	                                        <label class="col-xs-4 control-label" style="text-align: left;">Gender (*)</label>
+	                                        <div class="col-xs-7">
+	                                            <div class="radio">
+	                                                <label>
+	                                                    <input type="radio" name="jk" value="Laki-Laki" /> Male
+	                                                </label>
+	                                            </div>
+	                                            <div class="radio">
+	                                                <label>
+	                                                    <input type="radio" name="jk" value="Perempuan" /> Female
+	                                                </label>
+	                                            </div>
+	                                        </div>
+	                                    </div>
+
+	                                    <div class="form-group">
+	                                        <label class="col-xs-4 control-label" style="text-align: left;">Email (*)</label>
+	                                        <div class="col-xs-7">
+	                                            <input type="text" class="form-control" style="width: 300px;" name="email" />
+	                                        </div>
+	                                    </div>
+
+	                                    <div class="form-group">
+	                                        <label class="col-xs-4 control-label" style="text-align: left;">Kode Barang (*)</label>
+	                                        <div class="col-xs-7">
+	                                            <input type="text" class="form-control" style="width: 300px;" name="kode" />
+	                                        </div>
+	                                    </div>
+
+	                                    <div class="form-group">
+	                                        <label class="col-xs-4 control-label" style="text-align: left;">Jumlah Barang (*)</label>
+	                                        <div class="col-xs-7">
+	                                            <select class="form-control" name="jml" id="kota" style="width: 300px;">
+	                                                <option value="">-- Pilih --</option>
+	                                                <option value="1">1</option>
+	                                                <option value="2">2</option>
+	                                                <option value="3">3</option>
+	                                                <option value="4">4</option>
+	                                                <option value="5">5</option>
+	                                            </select>
+	                                        </div>
+	                                    </div>
+
+	                                    <div class="form-group">
+	                                        <label class="col-xs-4 control-label" style="text-align: left;">Keterangan</label>
+	                                        <div class="col-xs-7">
+	                                            <textarea rows="4" cols="50" class="form-control" style="width: 300px;" name="keterangan"></textarea> 
+	                                        </div>
+	                                    </div>
+
+	                                    <br><br>
+	                                    <p class="help-block">&nbsp;</p>
+	                                    <label style="text-align: left; color:red; font-style: italic;">Note : (*) Mandatory Field</label>
+	                                </div> 
+	                            </div>
+	                        </section>
+
+	                        <h2>Pembayaran</h2>
+	                        <section data-step="1">
+	                            <div class="row" style="font-size: 13px;">
+	                                <div class="col-lg-6">
+	                                    <div class="form-group">
+	                                        <label class="col-xs-4 control-label" style="text-align: left;">No. Rek Anda (*)</label>
+	                                        <div class="col-xs-7">
+	                                            <input type="text" class="form-control" style="width: 300px;" name="no_rek" />
+	                                        </div>
+	                                    </div>
+
+	                                    <div class="form-group">
+	                                        <label class="col-xs-4 control-label" style="text-align: left;">
+	                                        	<img src="images/bri.png" height="35" width="80">
+	                                        </label>
+	                                        <div class="col-xs-7" style="margin-top:15px; margin-left:-10px;">
+												<span style="font-size: small;"><b style="color: #4183D7; margin-top:10px;">123456789</b></span><br>
+	                                        </div>
+	                                    </div>
+
+	                                    <div class="form-group">
+	                                        <label class="col-xs-4 control-label" style="text-align: left;">
+	                                        	<img src="images/bni.png" height="35" width="80">
+	                                        </label>
+	                                        <div class="col-xs-7" style="margin-top:15px; margin-left:-10px;">
+												<span style="font-size: small;"><b style="color: #4183D7; margin-top:10px;">123456789</b></span><br>
+	                                        </div>
+	                                    </div>
+
+	                                    <div class="form-group">
+	                                        <label class="col-xs-4 control-label" style="text-align: left;">
+	                                        	<img src="images/bca.png" height="35" width="80">
+	                                        </label>
+	                                        <div class="col-xs-7" style="margin-top:15px; margin-left:-10px;">
+												<span style="font-size: small;"><b style="color: #4183D7; margin-top:10px;">123456789</b></span><br>
+	                                        </div>
+	                                    </div>
+
+	                                    <div class="form-group">
+	                                        <label class="col-xs-4 control-label" style="text-align: left;">
+	                                        	<img src="images/cimb.jpg" height="35" width="80">
+	                                        </label>
+	                                        <div class="col-xs-7" style="margin-top:15px; margin-left:-10px;">
+												<span style="font-size: small;"><b style="color: #4183D7; margin-top:10px;">123456789</b></span><br>
+	                                        </div>
+	                                    </div>
+
+	                                    <div class="form-group">
+	                                        <label class="col-xs-4 control-label" style="text-align: left;">No. Rek Tujuan (*)</label>
+	                                        <div class="col-xs-7">
+	                                            <select class="form-control" name="no_rek_tujuan" id="kota" style="width: 300px;">
+	                                                <option value="">--Select--</option>
+	                                                <option value="bni">BNI</option>
+	                                                <option value="bri">BRI</option>
+	                                                <option value="bca">BCA</option>
+	                                                <option value="cimb">CIMB</option>
+	                                            </select>
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                            </div>
+	                            <br><br>
+	                            <p class="help-block">&nbsp;</p>
+	                            <label style="text-align: left; color:red; font-style: italic;">Note : (*) Mandatory Field</label> 
+	                        </section>
+	                                                
+	                        <h2>Konfirmasi</h2>
+	                        <section data-step="2">
+	                            <div class="row" style="font-size: 13px;">
+	                                <div class="col-lg-6">
+	                                    <div class="form-group">
+	                                        <label class="col-xs-4 control-label" style="text-align: left;">Konfirmasi (*)</label>
+	                                        <div class="col-xs-7">
+	                                            <input type="checkbox" name="konfirmasi" value="konfirmasi"> Saya Telah Melakukan Pembayaran<br>
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                            </div>
+	                            <br><br>
+	                            <p class="help-block">&nbsp;</p>
+	                            <label style="text-align: left; color:blue; font-style: italic;">Note : Jika Anda Telah Transfer, maka check pada konfirmasi lalu finish</label><br>
+	                            <label style="text-align: left; color:red; font-style: italic;">Note : (*) Mandatory Field</label> 
+	                        </section>
+	                    </form>
+
+	                    <div class="modal fade" id="welcomeModal" tabindex="-1" role="dialog">
+	                        <div class="modal-dialog modal-sm">
+	                            <div class="modal-content">
+	                                <div class="modal-header">
+	                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	                                    <h4 class="modal-title">Thanks for fill form</h4>
+	                                </div>
+	                                <div class="modal-body">
+	                                    <p class="text-center">Thanks for fill form</p>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <br><br>
+	                </div>
+	            </div>
+	        </div>
+
+			<div style="clear: both"></div><br>
+
+			<!-- Footer -->
+			<div id="footer">
+				<div class="copyright">Copyright © 2017 Novianti WydiamuLyani Azizah IF16 (01116014)<br></div>
+			</div>
+
+			<!-- CSS Top -->
+			<div id="cstop">
+			  	<ul>
+				    <li><img src="images/telp.png" style="margin-top:5px;">Hotline: 081394289577</li>
+				    <li><img src="images/sms.png" style="margin-top:5px;">SMS: 081394289577</li>
+				    <li><img src="images/bb.png" style="margin-top:5px;">BBM: 59B16404</li>
+				    <li><img src="images/email.png" style="margin-top:5px;">noviazizah11@gmail.com</li>
+			  	</ul>
+			</div>
+		</div>
+
+	    <script type="text/javascript">
+	        $('.item').hover(
+	            function(){
+	                var $this = $(this);
+	                expand($this);
+	            },
+	            function(){
+	                var $this = $(this);
+	                collapse($this);
+	            }
+	        );
+	        function expand($elem){
+	            var angle = 0;
+	            var t = setInterval(function () {
+	                if(angle == 1440){
+	                    clearInterval(t);
+	                    return;
+	                }
+	                angle += 40;
+	                $('.link',$elem).stop().animate({rotate: '+=-40deg'}, 0);
+	            },10);
+	            $elem.stop().animate({width:'268px'}, 1000)
+	            .find('.item_content').fadeIn(400,function(){
+	                $(this).find('p').stop(true,true).fadeIn(600);
+	            });
+	        }
+	        function collapse($elem){
+	            var angle = 1440;
+	            var t = setInterval(function () {
+	                if(angle == 0){
+	                    clearInterval(t);
+	                    return;
+	                }
+	                angle -= 40;
+	                $('.link',$elem).stop().animate({rotate: '+=40deg'}, 0);
+	            },10);
+	            $elem.stop().animate({width:'52px'}, 1000)
+	            .find('.item_content').stop(true,true).fadeOut().find('p').stop(true,true).fadeOut();
+	        }
+	    </script>
+	</body>
+</html>
+
+

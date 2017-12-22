@@ -1,0 +1,265 @@
+body {
+    font-family: Tahoma;
+    font-size: 12px;
+    color: #333;
+    background-color: #FB3200
+}
+ 
+a { color:#FB3200;text-decoration: none }
+hr { color:#FB3200;text-decoration: none }
+.notif { color:#FB3200;text-decoration: none; }
+#wrap {
+    background: #FFF;
+    width: 900px;
+    margin: 0 auto;
+    margin-top: 35px;
+    padding: 0 10px; 
+}
+
+#cstop {
+    position: fixed;
+    height: 35px;
+    top: 0;
+    font-size : 11px;
+    font-weight : bold;
+    width: 920px;
+    float: left;
+    margin-left: -10px;
+    background : #26505d;
+    background-repeat: repeat-x;
+    padding : 0;
+}
+
+#cstop ul {
+    margin : 0;
+    padding :0 5px;
+}
+
+#cstop ul li {
+    list-style-type: none;
+    width : 25%;
+    line-height : 30px;
+    float : left;
+    color: #FB3200;
+    text-align : left;
+}
+
+/*menu*/
+.menu{
+    width:800px;
+    height:40px;
+    position:relative;
+    font-family: "Trebuchet MS", sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.text{
+    font-size: 13px;
+}
+.item{
+    position:relative;
+    background-color:#f0f0f0;
+    float:right;
+    width:52px;
+    margin:0px 5px;
+    height:52px;
+    border:2px solid #ddd;
+    -moz-border-radius:30px;
+    -webkit-border-radius:30px;
+    border-radius:30px;
+    -moz-box-shadow:1px 1px 3px #555;
+    -webkit-box-shadow:1px 1px 3px #555;
+    box-shadow:1px 1px 3px #555;
+    cursor:pointer;
+    overflow:hidden;
+}
+
+.link{
+    left:2px;
+    top:2px;
+    position:absolute;
+    width:48px;
+    height:48px;
+}
+.icon_beranda{
+    background:transparent url(../images/beranda.png) no-repeat top left;
+}
+.icon_profile{
+    background:transparent url(../images/profile.png) no-repeat top left;
+}
+.icon_diskon{
+    background:transparent url(../images/diskon.png) no-repeat top left;
+}
+.icon_order{
+    background:transparent url(../images/order.png) no-repeat top left;
+}
+.icon_kontak{
+    background:transparent url(../images/kontak.png) no-repeat top left;
+}
+.icon_saran{
+    background:transparent url(../images/saran.png) no-repeat top left;
+}
+.icon_barang{
+    background:transparent url(../images/barang.png) no-repeat top left;
+}
+.item_content{
+    position:absolute;
+    height:52px;
+    width:220px;
+    overflow:hidden;
+    left:56px;
+    top:7px;
+    background:transparent;
+    display:none;
+}
+
+/*content*/
+#isi {
+    float: right;
+    width: 688px;
+    margin-right: 4px;
+    padding: 0px 
+}
+ 
+#sidebar {
+    float: left;
+    width: 194px;
+    text-align: left;
+    color: #FB3200;
+    margin-top: 5px; 
+}
+ 
+#sidebar .box {
+    border: 1px solid #FFDF9D;
+    margin-bottom: 5px;
+    background-color: #FFF;
+    background-image: url(images/orange/shadow.jpg);
+    background-repeat: repeat-x;
+    padding: 5px 
+}
+ 
+#sidebar .box h3, #sidebar h3 {
+    color: #FB3200;
+    height: 20px;
+    font-family: Tahoma, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    padding-left: 0px;
+    text-transform: uppercase; 
+}
+ 
+#sidebar a { color: #FB3200; }
+
+#sidebar ul {
+    list-style-type: none;
+    margin-top: 0;
+    margin-right: 0;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0px; 
+}
+ 
+#sidebar ul li {
+    border-bottom: 1px dotted #FF9900;
+    padding-top: 5px;
+    padding-right: 0.3em;
+    padding-bottom: 5px;
+    padding-left: 3px;
+    background-position: left center; 
+}
+ 
+#sidebar ul li:hover {
+    background-color: #FFDF9D;
+    border-bottom: 1px dotted #FF9900;
+    padding-top: 5px;
+    padding-right: 0.3em;
+    padding-bottom: 5px;
+    padding-left: 3px;
+    background-position: left center; 
+}
+
+#sidebar ul li ul {
+    list-style-type: square;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0px;
+    padding-left: 3px; 
+}
+ 
+#sidebar ul li ul li {
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 1px;
+    border-left-width: 0;
+    border-bottom-style: dotted;
+    border-bottom-color: #FF9900; 
+}
+
+.entrytitle { border-bottom:1px dashed #FF9900;text-align: left } 
+.entrytitle h2 {
+    color: #FB3200;
+    font-size: 13px;
+    font-style: normal;
+    margin: 0 0 5px;
+    padding: 0 
+}
+
+.barang1 {
+    width: 164px;
+    height: 261px;
+    float: left;
+    border: 1px solid #FFDF9D;
+    margin: 3px;
+    background-image: url(images/orange/shadow.jpg);
+    background-repeat: repeat-x 
+}
+ 
+.barang2 {
+    width: 164px;
+    height: 261px;
+    float: left;
+    border: 1px dashed #FF9900;
+    margin: 3px;
+    background-image: url(images/orange/shadow.jpg);
+    background-repeat: repeat-x 
+}
+ 
+.barang1 p,.barang2 p { margin: 2px 0 3px }
+.barang1 img,.barang2 img { padding: 7px }
+ 
+.hometitle h2 {
+    text-align: center;
+    font-size: 12px; 
+}
+ 
+.hometitle {
+    font-size: 12px;
+    color: #FB3200;
+    font-weight: 700;
+    margin-top: 10px;
+    text-align: center;
+    width: 164px;
+    margin-bottom: 7px; 
+}
+
+.harga { font-size:13px;color: #FB3200 }
+.small { font-size:10px;color: #FB3200 }
+
+/*footer*/
+#footer {
+    background: #FB3200;
+    width: 920px;
+    padding-bottom: 10px;
+    margin-left: -10px;
+    color: #FFF;
+    border-top: 4px solid #FF9900 
+}
+ 
+#footer a { color: #FF9900 } 
+#footer .designby { text-align:center;color: #FF9900 }
+#footer .copyright { padding-top:10px;text-align: center }
